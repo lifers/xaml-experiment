@@ -1,14 +1,20 @@
 module App;
 
 import xamlbridge;
+using namespace winrt;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::XamlTypeInfo;
+using namespace Microsoft::UI::Xaml::Markup;
+using namespace Windows::UI::Xaml::Interop;
 
 class App : public ApplicationT<App, IXamlMetadataProvider>
 {
 public:
 	void OnLaunched(LaunchActivatedEventArgs const&)
 	{
-		Resources().MergedDictionaries().Append(XamlControlsResources());
-		window = Window();
+		this->Resources().MergedDictionaries().Append(XamlControlsResources());
+		this->window = Window();
 
 		StackPanel stackPanel;
 		stackPanel.HorizontalAlignment(HorizontalAlignment::Center);
@@ -17,22 +23,22 @@ public:
 		Button button;
 		button.Content(box_value(L"WinUI 3 Without XAML!"));
 
-		window.Content(stackPanel);
+		this->window.Content(stackPanel);
 		stackPanel.Children().Append(button);
 
-		window.Activate();
+		this->window.Activate();
 	}
 	IXamlType GetXamlType(TypeName const& type)
 	{
-		return provider.GetXamlType(type);
+		return this->provider.GetXamlType(type);
 	}
 	IXamlType GetXamlType(hstring const& fullname)
 	{
-		return provider.GetXamlType(fullname);
+		return this->provider.GetXamlType(fullname);
 	}
 	com_array<XmlnsDefinition> GetXmlnsDefinitions()
 	{
-		return provider.GetXmlnsDefinitions();
+		return this->provider.GetXmlnsDefinitions();
 	}
 private:
 	Window window{ nullptr };
