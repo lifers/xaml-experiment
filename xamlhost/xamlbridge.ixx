@@ -15,6 +15,8 @@ namespace winrt
 	using winrt::com_array;
 	using winrt::hstring;
 	using winrt::operator==;
+	using winrt::init_apartment;
+	using winrt::make;
 
 	namespace impl
 	{
@@ -24,6 +26,7 @@ namespace winrt
 		using winrt::impl::consume_Microsoft_UI_Xaml_Controls_IContentControl;
 		using winrt::impl::consume_Microsoft_UI_Xaml_Markup_IXamlMetadataProvider;
 		using winrt::impl::consume_Windows_Foundation_Collections_IVector;
+		using winrt::impl::IAgileObject;
 	}
 
 	namespace Microsoft
